@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  ScrollView,
 } from "react-native";
 import { faBookmark as regularBookmark } from "@fortawesome/free-regular-svg-icons";
 import { faBookmark as solidBookmark } from "@fortawesome/free-solid-svg-icons";
@@ -33,60 +34,65 @@ export function MealDisplayBox({ recipes }: MealDisplayBoxProps) {
   const isBookmark = (recipe: any) => recipeSearch(recipe.id);
 
   return (
-    <RecipeProvider>
-      <FlatList
-        data={recipes}
-        keyExtractor={(item: any) => item.id.toString()} // Key for each item
-        renderItem={({ item }) => (
-          <SafeAreaView>
-            <View style={styles.recipeDisplayContainer}>
-              <View style={{ flexDirection: "row" }}>
-                <Text
-                  style={styles.recipeTitle}
-                  numberOfLines={1}
-                  ellipsizeMode="tail"
-                >
-                  {item.title}
-                </Text>
-                <TouchableOpacity
-                  style={{ alignItems: "flex-end", flex: 2, padding: 4 }}
-                  onPress={() => handleBookmark(item)}
-                >
-                  <FontAwesomeIcon
-                    icon={isBookmark(item) ? solidBookmark : regularBookmark} // Provide correct icons
-                    style={{
-                      color: isBookmark(item) ? "#EFBF17" : "#222222",
-                    }}
-                  />
-                </TouchableOpacity>
-              </View>
-              <View style={{ flexDirection: "row", columnGap: 10 }}>
-                <Image
-                  source={{ uri: item.image }}
-                  style={styles.image}
-                ></Image>
-                <View style={{ flexDirection: "column", flex: 1 }}>
-                  <Text style={styles.recipeSubtext1}>
-                    Cook time: {item.readyInMinutes} min
+    <RecipeProvider children={undefined}>
+      <SafeAreaView>
+        <FlatList
+          style={{ marginBottom: 200 }}
+          data={recipes}
+          keyExtractor={(item: any) => item.id.toString()} // Key for each item
+          renderItem={({ item }) => (
+            <ScrollView>
+              <View style={styles.recipeDisplayContainer}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text
+                    style={styles.recipeTitle}
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    {item.title}
                   </Text>
-                  <Text style={styles.recipeSubtext2}>
-                    Servings: {item.servings}
-                  </Text>
-                  <Text style={styles.recipeSubtext2}>Some other info</Text>
+                  <TouchableOpacity
+                    style={{ alignItems: "flex-end", flex: 2, padding: 4 }}
+                    onPress={() => handleBookmark(item)}
+                  >
+                    <FontAwesomeIcon
+                      icon={isBookmark(item) ? solidBookmark : regularBookmark} // Provide correct icons
+                      style={{
+                        color: isBookmark(item) ? "#EFBF17" : "#222222",
+                      }}
+                    />
+                  </TouchableOpacity>
+                </View>
+                <View style={{ flexDirection: "row", columnGap: 10 }}>
+                  <Image
+                    source={{ uri: item.image }}
+                    style={styles.image}
+                  ></Image>
+                  <View style={{ flexDirection: "column", flex: 1 }}>
+                    <Text style={styles.recipeSubtext1}>
+                      Cook time: {item.readyInMinutes} min
+                    </Text>
+                    <Text style={styles.recipeSubtext2}>
+                      Servings: {item.servings}
+                    </Text>
+                    <Text style={styles.recipeSubtext2}>Some other info</Text>
 
-                  <View style={{ alignItems: "flex-end", marginTop: 10 }}>
-                    <ThemedButton
-                      title="Recipe"
-                      //   onPress={() => handleRecipePress(item.id)}
-                    ></ThemedButton>
+                    <View style={{ alignItems: "flex-end", marginTop: 10 }}>
+                      <ThemedButton
+                        title="Recipe"
+                        //   onPress={() => handleRecipePress(item.id)}
+                      ></ThemedButton>
+                    </View>
                   </View>
                 </View>
               </View>
-            </View>
-            {/* <View style={{ padding: 10 }}></View> */}
-          </SafeAreaView>
-        )}
-      ></FlatList>
+              <View style={{ padding: 10 }}></View>
+            </ScrollView>
+          )}
+        >
+          <View style={{ paddingBottom: 10 }}></View>
+        </FlatList>
+      </SafeAreaView>
     </RecipeProvider>
   );
 }

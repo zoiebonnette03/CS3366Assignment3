@@ -89,7 +89,7 @@ const RecipeSearch = () => {
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               color="#222222"
-              style={{ padding: 4, paddingRight: 6 }}
+              style={{ margin: 6, marginRight: 6 }}
             ></FontAwesomeIcon>
           </TouchableOpacity>
           <TextInput
@@ -154,10 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(212, 206, 195, 1)",
     borderRadius: 24,
     flexDirection: "row",
-  },
-  separator: {
-    height: 0, // Adjust the height of the separator
-    width: "100%", // Full width
+    fontFamily: "InterRegular",
   },
 });
 

@@ -4,6 +4,10 @@ import { useFonts } from "expo-font";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
+import {
+  faBasketShopping,
+  faBookOpen,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function RootLayout() {
   const [loaded] = useFonts({
@@ -19,25 +23,52 @@ export default function RootLayout() {
         screenOptions={{
           tabBarStyle: {
             backgroundColor: "#F3EDE4",
-            elevation: 0, // Remove shadow on Android
+            elevation: 0,
             shadowOpacity: 0,
-            borderTopWidth: 0, // Remove the top border
+            borderTopWidth: 0,
           },
         }}
       >
+        <Tabs.Screen
+          name="calendar"
+          options={{
+            headerShown: false,
+            tabBarLabel: () => null,
+            tabBarActiveTintColor: "#306090",
+            tabBarInactiveTintColor: "gray",
+            tabBarIcon: ({ color, size }) => (
+              <FontAwesomeIcon icon={faCalendar} color={color} size={size} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="home"
+          options={{
+            headerShown: false,
+            tabBarLabel: () => null,
+            tabBarActiveTintColor: "#306090",
+            tabBarInactiveTintColor: "gray",
+            tabBarIcon: ({ color, size }) => (
+              <FontAwesomeIcon
+                icon={faBasketShopping}
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
         <Tabs.Screen
           name="index"
           options={{
             headerShown: false,
             tabBarLabel: () => null,
             tabBarActiveTintColor: "#306090",
-            tabBarInactiveTintColor: "#222222",
+            tabBarInactiveTintColor: "gray",
             tabBarIcon: ({ color, size }) => (
-              <FontAwesomeIcon icon={faCalendar} color={color} size={size} />
+              <FontAwesomeIcon icon={faBookOpen} color={color} size={size} />
             ),
           }}
         />
-        <Tabs.Screen name="home" options={{ headerShown: false }} />
       </Tabs>
     </RecipeProvider>
   );

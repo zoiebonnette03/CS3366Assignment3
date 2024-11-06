@@ -33,7 +33,6 @@
       "typedRoutes": true
     },
     "extra": {
-      "RECIPE_API_KEY": "cb0549b009a545abb4538a92387d7a1a",
       "eas": {
         "projectId": "32aaa524-7e64-4684-9c91-ec5f6aa0669b"
       }

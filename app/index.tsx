@@ -31,9 +31,7 @@ const RecipeSearch = () => {
 
   const router = useRouter();
   const apiKey = Constants.expoConfig?.extra?.RECIPE_API_KEY;
-  useEffect(() => {
-    console.log("API Key:", Constants.expoConfig?.extra?.RECIPE_API_KEY);
-  }, []);
+
   const handleSearch = async () => {
     try {
       fetchRecipes(searchQuery);
@@ -44,7 +42,6 @@ const RecipeSearch = () => {
   };
 
   const fetchRecipes = async (query: string) => {
-    console.log(Constants.expoConfig?.extra?.RECIPE_API_KEY);
     const url = `https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=${apiKey}&addRecipeInformation=true`;
 
     try {
@@ -100,7 +97,7 @@ const RecipeSearch = () => {
             placeholderTextColor="#555555"
           ></TextInput>
         </View>
-        <View style={{ paddingBottom: 10 }}></View>
+        <View style={{ paddingBottom: 25 }}></View>
         <MealDisplayBox recipes={recipes}></MealDisplayBox>
       </SafeAreaView>
     </SafeAreaProvider>

@@ -24,19 +24,19 @@ export default function RootLayout() {
         screenOptions={{
           tabBarStyle: {
             backgroundColor: "#F3EDE4",
-            elevation: 0, // Remove shadow on Android
+            elevation: 0,
             shadowOpacity: 0,
-            borderTopWidth: 0, // Remove the top border
+            borderTopWidth: 0,
           },
         }}
       >
         <Tabs.Screen
-          name="index"
+          name="calendar"
           options={{
             headerShown: false,
             tabBarLabel: () => null,
             tabBarActiveTintColor: "#306090",
-            tabBarInactiveTintColor: "#222222",
+            tabBarInactiveTintColor: "gray",
             tabBarIcon: ({ color, size }) => (
               <FontAwesomeIcon icon={faCalendar} color={color} size={size} />
             ),

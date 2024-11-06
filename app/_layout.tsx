@@ -4,6 +4,11 @@ import { useFonts } from "expo-font";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
+import {
+  faBasketShopping,
+  faBookBookmark,
+  faBookOpen,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function RootLayout() {
   const [loaded] = useFonts({
@@ -37,7 +42,38 @@ export default function RootLayout() {
             ),
           }}
         />
-        <Tabs.Screen name="home" options={{ headerShown: false }} />
+        <Tabs.Screen
+          name="home"
+          options={{
+            headerShown: false,
+            tabBarLabel: () => null,
+            tabBarActiveTintColor: "#306090",
+            tabBarInactiveTintColor: "gray",
+            tabBarIcon: ({ color, size }) => (
+              <FontAwesomeIcon
+                icon={faBasketShopping}
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="index"
+          options={{
+            headerShown: false,
+            tabBarLabel: () => null,
+            tabBarActiveTintColor: "#306090",
+            tabBarInactiveTintColor: "gray",
+            tabBarIcon: ({ color, size }) => (
+              <FontAwesomeIcon
+                icon={faBookBookmark}
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
       </Tabs>
     </RecipeProvider>
   );
